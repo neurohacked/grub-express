@@ -13,8 +13,8 @@ app.listen(PORT, function () {
 
 // Links to our html routes
 
-require('./app/routing/routes-api.js')(app);
-require('./app/routing/routes-html.js')(app);
+require('./app/routing/api-routes.js')(app);
+require('./app/routing/html-routes.js')(app);
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
