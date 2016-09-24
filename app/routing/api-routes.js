@@ -1,12 +1,17 @@
-var reservations = require('../data/reservations.js');
+var tables = require('../data/table-data.js');
+var waitlist = require('../data/waitinglist-data.js');
 var path = require('path');
 
 module.exports = function(app){
 	app.get('/api/tables', function(req, res){
-		res.json(reservations);
+		res.json(tables);
 	});
 
-	app.post('/api/waitlist', function(req, res){
-		grub.push(req.body);
+	app.get('/api/waitlist', function(req, res){
+		res.json(waitlist);
 	});
-}
+
+	// app.post('/api/waitlist', function(req, res){
+	// 	grub.push(req.body);
+	// });
+};
