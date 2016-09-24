@@ -55,10 +55,10 @@
 								<input type="text" class="form-control" id="reserve_email">
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="">Unique ID</label>
 								<input type="text" class="form-control" id="reserve_uniqueID">
-							</div>
+							</div> -->
 
 							<button type="submit" class="btn btn-primary submit">Submit</button>
 						</form>
@@ -84,19 +84,19 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
+	var id = 1;
 	// In this code below we create the Front-end Javascript which "POSTS" our form data to our express server.
 	// In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
 	// Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
 	// In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
 	$(".submit").on("click", function() {
-
 		// Here we grab the form elements
 		var newReservation = {
 			customerName: $('#reserve_name').val().trim(),
 			phoneNumber: $('#reserve_phone').val().trim(),
 			customerEmail: $('#reserve_email').val().trim(),
-			customerID: $('#reserve_uniqueID').val().trim()
+			customerID: id
 		};
 
 		console.log(newReservation);
@@ -129,6 +129,9 @@
 			$('#reserve_uniqueID').val("");
 		});
 
+
+		id++;
+		console.log(id);
 		return false;
 
 	});
